@@ -1,18 +1,39 @@
 const {Sequelize, DataTypes} = require("sequelize");
 
+const sequelize = new Sequelize(
+    'tinyT',
+    'root',
+    'root',
+    {
+        host: 'localhost',
+        dialect: 'mysql',
+        port: 8889
+    }
+);
+
 const Order = sequelize.define("orders", {
-    user: {
-      type: DataTypes.STRING,
-      allowNull: false
+    id:{
+        type: DataTypes.BIGINT,
+        autoincrement: true,
+        primaryKey: true
     },
-    author: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    release_date: {
-      type: DataTypes.DATEONLY,
-    },
-    subject: {
+    userId: {
       type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    images: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    wordpressOrderInfo: {
+      type: DataTypes.TEXT,
+      allowNull: false
     }
  });
+
+ sequelize.sync().then(() => {
+    console.log('Order table created successfully!');
+ }).catch((error) => {
+    console.error('Unable to create table : ', error);
+ });
+ 

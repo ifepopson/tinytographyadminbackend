@@ -12,11 +12,11 @@ const sequelize = new Sequelize(
 );
 
 const Order = sequelize.define("orders", {
-    id:{
-        type: DataTypes.BIGINT,
-        autoincrement: true,
-        primaryKey: true
-    },
+    // id:{
+    //     type: DataTypes.BIGINT,
+    //     autoincrement: true,
+    //     primaryKey: true
+    // },
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false
@@ -37,3 +37,4 @@ const Order = sequelize.define("orders", {
     console.error('Unable to create table : ', error);
  });
  
+ module.exports = Order

@@ -12,18 +12,17 @@ const sequelize = new Sequelize(
 );
 
 const User = sequelize.define("users", {
-    id: {
-      type: DataTypes.BIGINT,
-      allowNull: false,
-      autoincrement: true,
-      primaryKey: true
+    role: {
+      type: DataTypes.STRING,
+      defaultValue: "user",
     },
     name: {
       type: DataTypes.STRING,
       allowNull: false
     },
     email: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        unique: true,
     },
     password: {
       type: DataTypes.STRING,
@@ -46,3 +45,4 @@ sequelize.sync().then(() => {
     console.error('Unable to create table : ', error);
  });
  
+ module.exports = User

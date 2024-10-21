@@ -13,11 +13,13 @@ const sequelize = new Sequelize(
     }
 );
 
-require("./models/order.model")
-require("./models/user.model")
+const Order = require("./models/order.model")
+const User = require("./models/user.model")
 
 sequelize.authenticate().then(() => {
     console.log('Connection has been established successfully.');
 }).catch((error) => {
     console.error('Unable to connect to the database: ', error);
 });
+
+module.exports = {sequelize, User, Order}

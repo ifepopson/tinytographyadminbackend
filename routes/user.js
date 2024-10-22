@@ -5,7 +5,7 @@ const mysql = require('mysql2');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
-const {sendEmail} = require('../mailer')
+// const {sendEmail} = require('../mailer')
 
 const {sequelize,User,Order} = require('../db')
 require('dotenv').config();

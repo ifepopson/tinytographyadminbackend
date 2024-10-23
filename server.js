@@ -1,9 +1,10 @@
 // server.js
 const express = require('express');
 const bodyParser = require('body-parser');
+require('dotenv').config();
+
 require('./db')
 
-require('dotenv').config();
 const userRoutes = require('./routes/user'); // Import the user routes
 
 const app = express();

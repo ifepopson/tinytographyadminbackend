@@ -12,6 +12,14 @@ require('dotenv').config();
 
 //reset password
 
+
+router.get("/test",(req,res) => {
+    
+    res.status(200).json({status: true});
+
+
+})
+
 router.post("/reset-password",(req,res) => {
     const {email} = req.body;
 

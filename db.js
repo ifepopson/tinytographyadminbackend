@@ -3,13 +3,13 @@ const Sequelize = require("sequelize");
 
 
 const sequelize = new Sequelize(
-    'tinyT',
-    'root',
-    'root',
+    process.env.DB_NAME,
+    process.env.DB_USER,
+    process.env.DB_PASSWORD,
     {
         host: 'localhost',
         dialect: 'mysql',
-        port: 8889
+        port: process.env.DB_PORT
     }
 );
 

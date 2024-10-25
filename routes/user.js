@@ -129,10 +129,10 @@ router.post('/upload-order', (req, res) => {
     
     // Handle the upload logic (e.g., saving to a database, processing images, etc.)
     // For now, we'll just log the received data
-    console.log('Received data:', { imageUrls, textField1, textField2 });
+    console.log('Received data:',  {imageUrls, orderDescription, generatedImageType,customerName,customerEmail,customerPhoneNumber,orderId });
     
     // Send a success response
-    res.status(200).json({ message: 'Order uploaded successfully', data: { imageUrls, textField1, textField2 } });
+    res.status(200).json({ message: 'Order uploaded successfully', data: { orderId, orderDescription } });
 });
 
 

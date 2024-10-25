@@ -16,16 +16,16 @@ require('dotenv').config();
 router.get("/test",(req,res) => {
     
     res.status(200).json({status: true});
-
-
+    
+    
 })
 
 router.post("/reset-password",(req,res) => {
     const {email} = req.body;
-
-  
-
-
+    
+    
+    
+    
 })
 
 // User Registration
@@ -108,29 +108,29 @@ router.post('/login', (req, res) => {
 router.post('/upload-order', (req, res) => {
     // Retrieve the secret key from the request headers
     const { secretkey } = req.headers;
-
+    
     // Check if the provided secret key matches the expected one
     if (secretkey !== process.env.WORDPRESS_SECRET_KEY) {
         return res.status(403).json({ message: 'Forbidden: Invalid secret key' });
     }
-
+    
     // Retrieve the image URLs and other fields from the request body
-    const { imageUrls, textField1, textField2 } = req.body;
-
+    const { imageUrls, orderDescription, generatedImageType,customerName,customerEmail,customerPhoneNumber,orderId } = req.body;
+    
     // Validate input
     if (!Array.isArray(imageUrls) || imageUrls.length === 0) {
         return res.status(400).json({ message: 'Image URLs must be an array and cannot be empty' });
     }
-
+    
     // You can add more validation for text fields if necessary
-    if (!textField1 || !textField2) {
-        return res.status(400).json({ message: 'Text fields are required' });
+    if (!customerName || !customerEmail || !generatedImageType || !customerPhoneNumber || !orderId) {
+        return res.status(400).json({ message: 'All fields are required.' });
     }
-
+    
     // Handle the upload logic (e.g., saving to a database, processing images, etc.)
     // For now, we'll just log the received data
     console.log('Received data:', { imageUrls, textField1, textField2 });
-
+    
     // Send a success response
     res.status(200).json({ message: 'Order uploaded successfully', data: { imageUrls, textField1, textField2 } });
 });
